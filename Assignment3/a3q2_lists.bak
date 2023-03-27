@@ -1,0 +1,14 @@
+#|
+Ebehiremen Iyere
+101120396
+|#
+
+;3 The purpose of this procedure is to count the occurencs of x in a list L
+
+(define (count x L)
+    (cond ((null? L) 0)
+          ((equal?  x (car L)) (+ 1 (count x (cdr L))))
+          (else (count item (cdr L)))))
+
+(count 3 '(1 4 3 6 2 3 3 1 4 3 5 7) )
+(count 'b '(4 b a 3 2 c b 1 b 2 d a))

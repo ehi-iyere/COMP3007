@@ -1,0 +1,32 @@
+(define (sum-of-nested-number-lists x lst)
+  (define (operator x) (cond ((equal? x +) +)
+                             ((equal? x *) *)
+                    ))
+  (define (helper lst)
+    (cond
+      (( and (null? lst) (equal? (operator x) + )) 0)
+      (( and (null? lst) (equal? (operator x) * )) )
+      ((pair? lst)
+       ((operator x) (sum-of-nested-number-lists (car lst))
+          (sum-of-nested-number-lists (cdr lst))))
+      (else lst))))
+
+(sum-of-nested-number-lists + '(1 (2 3)((4 5) 6 (7)((8 (9)) 10))))
+
+; c the purpose of this procedure is to take a list and flatten it to one list
+(define (flatten-tree x)
+    (cond ((null? x) '())
+          ((not (pair? x)) (list x))
+          (else (append (flatten-tree (car x))
+                        (flatten-tree (cdr x))))))
+(flatten-tree '(1 (2 3) ((4 5 6 (7)))(((8 (9))))))
+;height
+
+(define (depth-count node)
+  (cond ((null? (children node)) 1) ; base case: if node is a leaf
+        (else                       ; otherwise node has children
+         (add1                                          ; add one
+          (apply max                                    ; to the maximum of
+                 (map depth-count (children node))))))) ; the recursive call
+
+(depth-count '(a (b) c))

@@ -1,0 +1,14 @@
+(define (comp-func . procs)
+  (define (comp-rec arg)
+    (if (null? procs)
+        arg
+        (let ((proc (car procs))
+              (rest (cdr procs)))
+          (set! procs rest)
+          (proc (comp-rec arg)))))
+
+  comp-rec)
+
+(define square (lambda(x)(* x x)))
+(define double (lambda(x)(+ x x)))
+((comp-func square double) 3)
