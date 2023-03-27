@@ -1,0 +1,62 @@
+#|
+Ebehiremen
+Iyere|#
+(define (test x y) 
+        (if (= x 0)
+            x
+            y))
+
+   ; (test 0 (/ 4 0))
+#|
+a. In applicative Oreder of evaluation the procedure will result in an error due to y being undefined.
+applicative order will try  evaaluate both x and y
+
+b. Normal order would result in zero becasue it will once x proves to be true the proceduer will exit
+
+c. let a for all real numbers
+|#
+(define (foo a b)(
+             (cond
+               ((> b 0) +)
+               ((= b 0) *)
+               (else /)) a b))
+
+#|Applicative model
+(foo a b)
+
+b>0
+check b > 0 #t
+check b = 0 #f
+check elsee #f
+final a+b
+
+b =0
+check b > 0 #f
+check b = 0 #t
+check elsee #f
+final a*b
+
+b !(= or >)
+check b > 0 #f
+check b = 0 #f
+check elsee #t
+final a/b
+
+Normal Model
+
+b>0
+check b > 0 #t
+final: a+b
+
+b=0
+check b > 0 #f
+check b = 0 #f
+final: a*b
+
+b !(= or >)
+check b > 0 #f
+check b = 0 #f
+check elsee #t
+final a/b
+
+|#
